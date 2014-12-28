@@ -160,6 +160,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 		Fragment currentFragment = getCurrentFragment();
 		if (null == currentFragment || !fragment.equals(currentFragment)) {
+			mFm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 			mFm.beginTransaction().replace(R.id.container, fragment, CURRENT_FRAGMENT).commit();
 			mDrawerList.setItemChecked(position, true);
 			return true;
