@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/recents_settings" >
+
+    <SwitchPreference
+        android:key="recents_show_hide_search_bar"
+        android:summary="@string/recents_show_searchbar_summary"
+        android:title="@string/recents_show_searchbar" />
+    <SwitchPreference
+        android:key="recents_show_hide_clear_all"
+        android:summary="@string/recents_show_clearall_summary"
+        android:title="@string/recents_show_clearall" />
+
+    <ListPreference
+        android:dependency="recents_show_hide_clear_all"
+        android:dialogTitle="@string/recents_clear_all_position"
+        android:entries="@array/recents_clear_all_position_entries"
+        android:entryValues="@array/recents_clear_all_position_values"
+        android:key="recents_clear_all_position"
+        android:title="@string/recents_clear_all_position" />
+
+</PreferenceScreen>
