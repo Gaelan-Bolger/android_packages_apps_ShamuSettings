@@ -56,6 +56,20 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		if (null == getCurrentFragment()) {
+			mDrawerLayout.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					mDrawerLayout.openDrawer(Gravity.LEFT);
+				}
+			}, 300);
+		}
+	}
+
+	@Override
 	public void onSupportContentChanged() {
 		super.onSupportContentChanged();
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);

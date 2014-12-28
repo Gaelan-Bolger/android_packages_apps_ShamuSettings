@@ -17,6 +17,7 @@ public class StatusBarSettings extends PreferenceFragment implements OnPreferenc
 	private static final String KEY_STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
 	private static final String KEY_STATUS_BAR_NETWORK_TRAFFIC_STATE = "status_bar_network_traffic_state";
 	private static final String KEY_STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
+	private static final String KEY_STATUS_BAR_DOUBLE_TAP_SLEEP_GESTURE = "status_bar_double_tap_sleep_gesture";
 	private static final String KEY_STATUS_BAR_QUICK_QS_PULLDOWN = "status_bar_quick_qs_pulldown";
 	private static final String KEY_STATUS_BAR_SHOW_WEATHER = "status_bar_show_weather";
 	private static final String KEY_STATUS_BAR_BLOCK_ON_SECURE_KEYGUARD = "status_bar_locked_on_secure_keyguard";
@@ -67,6 +68,11 @@ public class StatusBarSettings extends PreferenceFragment implements OnPreferenc
 		brightnessControl
 				.setChecked(Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1);
 
+		SwitchPreference doubleTapSleep = (SwitchPreference) findPreference(KEY_STATUS_BAR_DOUBLE_TAP_SLEEP_GESTURE);
+		doubleTapSleep.setOnPreferenceChangeListener(this);
+		doubleTapSleep.setChecked(Settings.System.getInt(resolver, Settings.System.STATUS_BAR_DOUBLE_TAP_SLEEP_GESTURE,
+				0) == 1);
+
 		SwitchPreference quickQsPulldown = (SwitchPreference) findPreference(KEY_STATUS_BAR_QUICK_QS_PULLDOWN);
 		quickQsPulldown.setOnPreferenceChangeListener(this);
 		quickQsPulldown
@@ -96,6 +102,11 @@ public class StatusBarSettings extends PreferenceFragment implements OnPreferenc
 		if (KEY_STATUS_BAR_BRIGHTNESS_CONTROL.equals(key)) {
 			boolean value = (Boolean) objValue;
 			Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
+			return true;
+		}
+		if (KEY_STATUS_BAR_DOUBLE_TAP_SLEEP_GESTURE.equals(key)) {
+			boolean value = (Boolean) objValue;
+			Settings.System.putInt(resolver, Settings.System.STATUS_BAR_DOUBLE_TAP_SLEEP_GESTURE, value ? 1 : 0);
 			return true;
 		}
 		if (KEY_STATUS_BAR_QUICK_QS_PULLDOWN.equals(key)) {
