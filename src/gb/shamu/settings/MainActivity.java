@@ -166,6 +166,9 @@ public class MainActivity extends ActionBarActivity {
 		case 5: // Animation
 			fragment = new AnimationSettings();
 			break;
+		case 6: // Lockscreen
+			fragment = new LockscreenSettings();
+			break;
 		case 0: // Status
 		default:
 			fragment = new StatusBarSettings();

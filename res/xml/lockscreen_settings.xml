@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/lockscreen_settings" >
+
+    <SwitchPreference
+        android:key="quick_unlock_control"
+        android:persistent="false"
+        android:summary="@string/unlock_quick_unlock_control_summary"
+        android:title="@string/unlock_quick_unlock_control_title" />
+
+</PreferenceScreen>
